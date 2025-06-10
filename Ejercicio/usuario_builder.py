@@ -1,6 +1,5 @@
 from usuario import Usuario
 
-# Builder para crear usuarios con nombres de métodos más simples
 class UsuarioBuilder:
     def __init__(self):
         self.nombre_usuario = ""
