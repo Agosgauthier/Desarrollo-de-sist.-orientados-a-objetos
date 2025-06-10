@@ -1,6 +1,5 @@
 from usuario import Usuario
 
-# Singleton para gestionar usuarios (sin __new__)
 class GestorUsuarios:
     instancia = None
 
