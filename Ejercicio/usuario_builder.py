@@ -13,5 +13,5 @@ class UsuarioBuilder:
         self.correo_usuario = valor
         return self
 
-    def construir(self):
+    def build(self):
         return Usuario(self.nombre_usuario, self.correo_usuario)
