@@ -1,0 +1,88 @@
+#Polimorfismo  "Cada tipo de libro muestra su info de forma diferente"
+#Abstracción "Oculta detalles internos y muestra solo lo esencial. Se aplica en la clase Libro, obligando a sus subclases a implementar obtener_info()"
+#Herencia "Una clase hereda atributos y métodos de otra. LibroFisico y LibroDigital heredan de Libro"
+
+
+from abc import ABC, abstractmethod
+
+#Clase abstracta Libro
+class Libro(ABC): 
+    def __init__(self, titulo, autor, ISBN):
+        self.titulo = titulo
+        self.autor = autor
+        self.ISBN = ISBN
+        self.disponible = True  
+
+    #Abstraccion
+    def obtener_info(self):  
+        pass  # No dice cómo mostrar la info, solo que debe existir
+
+#Clase LibroFisico (Herencia)
+class LibroFisico(Libro):
+    def obtener_info(self):  #Polimorfismo 
+        return f"{self.titulo} - {self.autor} (ISBN: {self.ISBN}) [Libro Físico]"
+
+#Clase LibroDigital (Herencia)
+class LibroDigital(Libro):
+    def __init__(self, titulo, autor, ISBN, tamano_MB):
+        self.tamano_MB = tamano_MB
+
+    def obtener_info(self):  #Polimorfismo "Implementación específica para libros digitales"
+        return f"{self.titulo} - {self.autor} (ISBN: {self.ISBN}, {self.tamano_MB} MB) [Libro Digital]"
+
+#Clase usuario    
+class Usuario:
+     def __init__(self, nombre,id_usuario):
+       self.nombre=nombre
+       self.id_usuario=id_usuario
+       self.libros_prestados=[]  
+
+     def __str__(self):
+      return f"{self.nombre} (ID: {self.id_usuario})"
+    
+     def pedir_libro(self, libro):
+        if libro.disponible:
+            libro.disponible = False
+            self.libros_prestados.append(libro)
+            print(f"{self.nombre} ha tomado prestado '{libro.titulo}'.")
+        else:
+            print("El libro no está disponible.")
+    
+     def devolver_libro(self, libro):
+         if libro in self.libros_prestados:
+            libro.disponible = True
+            self.libros_prestados.remove(libro)
+            print(f"{self.nombre} ha devuelto '{libro.titulo}'.")
+         else:
+            print("Este libro no fue prestado por el usuario.")
+
+#Clase biblioteca
+class Biblioteca:
+    def __init__(self):
+        self.libros = []  
+        self.usuarios = [] 
+
+    def registrar_usuario(self, usuario):
+      self.usuarios.append(usuario)
+      print(f"Usuario {usuario.nombre} registrado.")
+
+    def agregar_libro(self, libro):
+        self.libros.append(libro)
+        print(f"Libro '{libro.titulo}' agregado a la biblioteca.")
+
+    def buscar_libro(self, criterio):
+        resultado = [libro for libro in self.libros
+                     if criterio.lower() in libro.titulo.lower() 
+                     or criterio.lower() in libro.autor.lower()]
+        return resultado
+
+#Clase prestamo
+class Prestamo:
+    def __init__(self, usuario, libro):
+        self.usuario = usuario
+        self.libro = libro
+        self.activo = True  # El préstamo está activo
+
+    def registrar_devolucion(self):
+        self.activo = False
+        print(f"El libro '{self.libro.titulo}' ha sido devuelto.")
