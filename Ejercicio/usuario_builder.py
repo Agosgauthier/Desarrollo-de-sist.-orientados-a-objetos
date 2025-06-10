@@ -14,4 +14,4 @@ class UsuarioBuilder:
         return self
 
     def construir(self):
-        return Usuario(self.nombre, self.correo)
+        return Usuario(self.nombre_usuario, self.correo_usuario)
