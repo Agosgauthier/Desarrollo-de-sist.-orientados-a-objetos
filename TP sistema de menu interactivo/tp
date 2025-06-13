@@ -1,0 +1,19 @@
+def mostrar_menu():
+ print("1. Ingresar nombre")
+ print("2. Ingresar apellido")
+ print("3. Salir")
+
+opcion = input("Elegí una opción: ")
+
+if opcion == "1":
+   nombre = input("Escribí tu nombre: ")
+   print("Nombre guardado:", nombre)
+elif opcion == "2":
+   apellido = input("Escribí tu apellido: ")
+   print("Apellido guardado:", apellido)
+elif opcion == "3":
+   print("chau")
+else:
+   print("Opción no válida.")
+
+print("Programa finalizado.")
