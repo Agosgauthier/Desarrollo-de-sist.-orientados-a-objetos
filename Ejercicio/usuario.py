@@ -4,4 +4,4 @@ class Usuario:
         self.correo = correo
 
     def __str__(self):
-        return f"{self.nombre_usuario} - {self.correo_usuario}"
+        return f"{self.nombre} - {self.correo}"
