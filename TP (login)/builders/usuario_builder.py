@@ -1,6 +1,5 @@
 from modelos.usuario import Usuario
 
-# Builder básico para crear un usuario paso a paso
 class UsuarioBuilder:
     def __init__(self):
         self.nombre = ""
@@ -16,3 +15,4 @@ class UsuarioBuilder:
 
     def construir(self):
         return Usuario(self.nombre, self.clave)
+
