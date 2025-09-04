@@ -1,4 +1,3 @@
-# Estrategia de autenticación
 class EstrategiaAutenticacion:
     def autenticar(self, usuario):
         raise NotImplementedError()
@@ -10,3 +9,4 @@ class AutenticacionSimple(EstrategiaAutenticacion):
 
     def autenticar(self, usuario):
         return usuario.nombre == self.usuario_valido and usuario.clave == self.clave_valida
+
