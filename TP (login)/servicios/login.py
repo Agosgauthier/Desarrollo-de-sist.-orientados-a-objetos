@@ -1,4 +1,3 @@
-# Servicio de login con DI (recibe la estrategia como parámetro)
 class ServicioLogin:
     def __init__(self, estrategia):
         self.estrategia = estrategia
@@ -8,3 +7,4 @@ class ServicioLogin:
             print("Login exitoso")
         else:
             print("Usuario o contraseña incorrectos")
+
