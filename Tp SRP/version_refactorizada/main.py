@@ -1,7 +1,7 @@
 from fuente_datos import FuenteDatos
 from procesador import Procesador
 from generador_reporte import GeneradorReporte
-from almacenamiento import almacenamiento
+from almacenamiento import Almacenamiento
 
 class Main:
     def ejecutar(self):
@@ -21,3 +21,4 @@ class Main:
 if __name__ == "__main__":
     app = Main()
     app.ejecutar()
+
